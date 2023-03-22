@@ -1,0 +1,28 @@
+matching_todos =Todo.where({:user_id=>session.fetch(:user_id)})
+    @list_of_todos = matching_todos.order({ :created_at => :desc })
+    @list_in_progress = matching_todos.where({:status=>"in_progress"})
+    @done = matching_todos.where({:status => "done"})
+
+<!--div class="in_progress">
+
+  <h2>In Progress</h2>
+
+  <ul>
+   <%= @list_in_progress.each do |a_todo|%>
+      <li>
+
+        <div> <%a_todo.content%></div>
+
+        <small> ago
+        
+          <a href="/delete_todo/<%= a_todo.id%>">Delete</a>
+        </small>
+
+        <form action="/modify_todo/<%a_todo.id%>" method="post">
+          <input type="hidden" name="query_status" value="done">
+          <button>Move to Done</button>
+        </form>
+      </li>
+      <%end%>
+  </ul>
+</div>
