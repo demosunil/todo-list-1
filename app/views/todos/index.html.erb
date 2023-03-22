@@ -23,8 +23,7 @@
       <h2>Next Up</h2>
 
        <ul>
-       <%# next_todos = Todo.where({:status => "Next up"}) %>
-        <%# next_todos.each do |a_todo| %>
+       
           <% @list_next_up.each do |a_todo|%>
 
           <li>
@@ -50,7 +49,7 @@
      <ul>
         <% progress_todos = Todo.where({:status => "In Progress"}) %>
         <% progress_todos.each do |a_todo| %>
-          <%# @list_in_progress.each do |a_todo|%>
+          
          <li>
            <div> <%= a_todo.content%></div>
           <small style="color: darkgreen;">Added <%=time_ago_in_words(a_todo.created_at)%>ago
@@ -73,7 +72,7 @@
      <ul>
        <% done_todos = Todo.where({:status => "Done"}) %>
         <% done_todos.each do |a_todo| %>
-       <%# @done.each do |a_todo|%>
+       
       
       <li>
         <div><%= a_todo.content%></div>
