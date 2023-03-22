@@ -30,7 +30,7 @@ class TodosController < ApplicationController
 
     the_todo.status = "next_up"
 
-    the_todo.id = session.fetch(:user_id)
+    the_todo.user_id = session.fetch(:user_id)
 
     
 
@@ -47,7 +47,7 @@ class TodosController < ApplicationController
     the_id = params.fetch("path_id")
     the_todo = Todo.where({ :id => the_id }).at(0)
      the_todo.status=params.fetch("query_status")
-
+     the_todo.user_id = session.fetch(:user_id)
     if the_todo.valid?
       the_todo.save
       redirect_to("/todos", { :notice => "Todo updated successfully."} )
